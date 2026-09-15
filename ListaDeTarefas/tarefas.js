@@ -62,3 +62,22 @@ export const listarTitulos = () => {
 
     return titulos;
 }
+
+export const resumoDasTarefas = () => {
+    const resumo = tarefas.reduce((acumulador, tarefa) => {
+        acumulador.total++;
+
+        if (tarefa.concluida === true) {
+            acumulador.concluidas++;
+        }
+        else {
+            acumulador.pendentes++;
+        }
+        return acumulador;
+    }, {
+        total: 0,
+        concluidas: 0,
+        pendentes: 0
+    });
+    return resumo;
+}
