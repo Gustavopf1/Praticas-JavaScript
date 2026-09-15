@@ -1,3 +1,4 @@
+import { openSync } from "node:fs";
 import { criarTarefa, buscarTarefaPorID, concluirTarefa, removerTarefa, listarPorPrioridade, listarConcluidas, listarPendentes, listarTitulos, resumoDasTarefas } from "./tarefas.js";
 import * as readline from "node:readline/promises";
 
@@ -88,6 +89,24 @@ const iniciarMenu = async () => {
         }
         console.log("\nTarefa removida com sucesso!\n");
 
+        iniciarMenu();
+    }
+
+    if (opcao === "5") {
+         
+        const prioridade = await rl.question("Digite a prioridade que deseja listar: ");
+
+        const tarefasPorPrioridade = listarPorPrioridade(prioridade);
+        for (let i = 0; i < tarefasPorPrioridade.length; i++) {
+            const tarefa = tarefasPorPrioridade[i];
+
+            console.log(`
+                ID: ${tarefa.id}
+                Título: ${tarefa.titulo}
+                Prioridade: ${tarefa.prioridade}
+                Concluída: ${tarefa.concluida ? "Sim" : "Não"}
+            `);
+        }
         iniciarMenu();
     }
 };
