@@ -56,3 +56,9 @@ export const listarPendentes = () => {
 
     return resultado;
 }
+
+export const listarTitulos = () => {
+    const titulos = tarefas.map((tarefa) => tarefa.titulo);
+
+    return titulos;
+}
