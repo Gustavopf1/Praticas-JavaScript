@@ -13,3 +13,8 @@ export const criarTarefa = (titulo, prioridade) => {
     return tarefa;
 }
 
+export const buscarTarefaPorID = (id) => {
+    const resultado = tarefas.find((tarefa) => tarefa.id === Number(id));
+
+    return resultado;
+}
