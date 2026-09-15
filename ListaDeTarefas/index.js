@@ -58,6 +58,22 @@ const iniciarMenu = async () => {
         `)
         iniciarMenu();
     }
+
+    if (opcao === "3") {
+
+        let tarefa;
+        while (tarefa === undefined) {
+            const id = await rl.question("Digite o ID da tarefa que deseja marcar como concluida: ");
+            tarefa = concluirTarefa(id);
+
+            if (tarefa === undefined) {
+                console.log("\nID INVÁLIDO! TENTE NOVAMENTE.\n");
+            }
+        }
+        console.log("\nTarefa marcada como concluída com sucesso!\n");
+
+        iniciarMenu();
+    }
 };
 
 iniciarMenu();
