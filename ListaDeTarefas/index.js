@@ -37,6 +37,27 @@ const iniciarMenu = async () => {
 
         iniciarMenu();
     }
+
+    if (opcao === "2") {
+
+        let tarefa;
+        while (tarefa === undefined) {
+            const id = await rl.question("Digite o ID da tarefa: ");
+            tarefa = buscarTarefaPorID(id);
+
+            if (tarefa === undefined) {
+                console.log("\nID INVÁLIDO! TENTE NOVAMENTE.\n");
+            }
+        }
+        console.log("\nTarefa encontrada: ");
+        console.log(`
+            ID: ${tarefa.id}
+            Título: ${tarefa.titulo}
+            Prioridade: ${tarefa.prioridade}
+            Concluída: ${tarefa.concluida ? "Sim" : "Não"}
+        `)
+        iniciarMenu();
+    }
 };
 
 iniciarMenu();
