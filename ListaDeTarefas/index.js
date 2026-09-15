@@ -22,3 +22,21 @@ const mostrarMenu = () => {
     0 - Sair
     `);
 };
+
+const iniciarMenu = async () => {
+    mostrarMenu();
+
+    const opcao = await rl.question("Escolha uma opcao: ");
+
+    if (opcao === "1") {
+
+        const titulo = await rl.question("Digite o título da tarefa: ");
+        const prioridade = await rl.question("Digite a prioridade da tarefa: ");
+        criarTarefa(titulo, prioridade);
+        console.log("\nTarefa criada com sucesso!\n");
+
+        iniciarMenu();
+    }
+};
+
+iniciarMenu();
