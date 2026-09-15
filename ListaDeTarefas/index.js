@@ -1,6 +1,7 @@
 import { openSync } from "node:fs";
 import { criarTarefa, buscarTarefaPorID, concluirTarefa, removerTarefa, listarPorPrioridade, listarConcluidas, listarPendentes, listarTitulos, resumoDasTarefas } from "./tarefas.js";
 import * as readline from "node:readline/promises";
+import { escape } from "node:querystring";
 
 const rl = readline.createInterface({
     input: process.stdin,
@@ -128,6 +129,28 @@ const iniciarMenu = async () => {
                 `);
             }
         } 
+        iniciarMenu();
+    }
+
+    if (opcao === "7") {
+
+        const pendentes = listarPendentes();
+
+        if (pendentes.length === 0) {
+            console.log("\nNenhuma tarefa pendente.\n");
+        }
+        else {
+            console.log("\nEssas são as tarefas pendentes:\n");
+
+            for (let i = 0; i < pendentes.length; i++) {
+                console.log(`
+                    ID: ${pendentes[i].id}
+                    Título: ${pendentes[i].titulo}
+                    Prioridade: ${pendentes[i].prioridade}
+                    Concluída: ${pendentes[i].concluida ? "Sim" : "Não"}
+                `);
+            }
+        }
         iniciarMenu();
     }
 };
