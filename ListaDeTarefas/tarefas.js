@@ -18,3 +18,13 @@ export const buscarTarefaPorID = (id) => {
 
     return resultado;
 }
+
+export const concluirTarefa = (id) => {
+    const tarefa = buscarTarefaPorID(id);
+
+    if (tarefa === undefined) {
+        return;
+    }
+    tarefa.concluida = true;
+    return tarefa;
+}
