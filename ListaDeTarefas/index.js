@@ -109,6 +109,27 @@ const iniciarMenu = async () => {
         }
         iniciarMenu();
     }
+
+    if (opcao === "6") {
+
+        const concluidas = listarConcluidas();
+
+        if (concluidas.length === 0) {
+            console.log("\nNenhuma tarefa concluída.\n");
+        }
+        else {
+            console.log("\nEssas são as tarefas marcadas como concluídas:\n");
+            for (let i = 0; i < concluidas.length; i++) {
+                console.log(`
+                    ID: ${concluidas[i].id}
+                    Título: ${concluidas[i].titulo}
+                    Prioridade: ${concluidas[i].prioridade}
+                    Concluída: ${concluidas[i].concluida ? "Sim" : "Não"}
+                `);
+            }
+        } 
+        iniciarMenu();
+    }
 };
 
 iniciarMenu();
