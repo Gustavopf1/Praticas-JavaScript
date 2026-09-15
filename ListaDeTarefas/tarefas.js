@@ -28,3 +28,13 @@ export const concluirTarefa = (id) => {
     tarefa.concluida = true;
     return tarefa;
 }
+
+export const removerTarefa = (id) => {
+    const posicao = tarefas.findIndex((tarefa) => tarefa.id === Number(id));
+
+    if (posicao === -1) {
+        return;
+    }
+    const removidos = tarefas.splice(posicao, 1);
+    return removidos[0];
+}
