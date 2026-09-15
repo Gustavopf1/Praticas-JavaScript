@@ -1,7 +1,5 @@
-import { openSync } from "node:fs";
 import { criarTarefa, buscarTarefaPorID, concluirTarefa, removerTarefa, listarPorPrioridade, listarConcluidas, listarPendentes, listarTitulos, resumoDasTarefas } from "./tarefas.js";
 import * as readline from "node:readline/promises";
-import { escape } from "node:querystring";
 
 const rl = readline.createInterface({
     input: process.stdin,
@@ -149,6 +147,23 @@ const iniciarMenu = async () => {
                     Prioridade: ${pendentes[i].prioridade}
                     Concluída: ${pendentes[i].concluida ? "Sim" : "Não"}
                 `);
+            }
+        }
+        iniciarMenu();
+    }
+
+    if (opcao === "8") {
+
+        const titulos = listarTitulos();
+
+        if (titulos.length === 0) {
+            console.log("\nNenhuma tarefa cadastrada.\n");
+        }
+        else {
+            console.log("\nTítulos das tarefas:\n");
+
+            for (let i = 0; i < titulos.length; i++) {
+                console.log(titulos[i]);
             }
         }
         iniciarMenu();
