@@ -168,6 +168,25 @@ const iniciarMenu = async () => {
         }
         iniciarMenu();
     }
+
+    if (opcao === "9") {
+
+        const resumo = resumoDasTarefas();
+
+        console.log(`
+            === RESUMO DAS TAREFAS ===
+
+            Total: ${resumo.total}
+            Concluídas: ${resumo.concluidas}
+            Pendentes: ${resumo.pendentes}
+        `);
+        iniciarMenu();
+    }
+
+    if (opcao === "0") {
+        console.log("\nPrograma encerrado!");
+        rl.close();
+    }
 };
 
 iniciarMenu();
