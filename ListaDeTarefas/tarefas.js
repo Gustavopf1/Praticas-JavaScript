@@ -44,3 +44,9 @@ export const listarPorPrioridade = (prioridade) => {
 
     return resultado;
 }
+
+export const listarConcluidas = () => {
+    const resultado = tarefas.filter((tarefa) => tarefa.concluida === true);
+
+    return resultado;
+}
