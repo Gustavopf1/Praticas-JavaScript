@@ -50,3 +50,9 @@ export const listarConcluidas = () => {
 
     return resultado;
 }
+
+export const listarPendentes = () => {
+    const resultado = tarefas.filter((tarefa) => tarefa.concluida === false);
+
+    return resultado;
+}
