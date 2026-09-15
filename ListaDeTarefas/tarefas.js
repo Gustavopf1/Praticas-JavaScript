@@ -38,3 +38,9 @@ export const removerTarefa = (id) => {
     const removidos = tarefas.splice(posicao, 1);
     return removidos[0];
 }
+
+export const listarPorPrioridade = (prioridade) => {
+    const resultado = tarefas.filter((tarefa) => tarefa.prioridade === prioridade);
+
+    return resultado;
+}
