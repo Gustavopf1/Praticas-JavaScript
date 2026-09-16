@@ -2,13 +2,19 @@ const listaDePedidos = [];
 
 export const criarPedido = (produto, preco) => {
 
-    const novoPedido = {
-        id: pedidos.length + 1,
+    const pedido = {
+        id: listaDePedidos.length + 1,
         produto: produto,
         preco: preco,
         status: "preparando"
     }
-    listaDePedidos.push(novoPedido);
+    listaDePedidos.push(pedido);
 
-    return novoPedido;
+    return pedido;
+}
+
+export const buscarPedidoPorID = (id) => {
+    const resultado = listaDePedidos.find((pedido) => pedido.id === Number(id));
+
+    return resultado;
 }
