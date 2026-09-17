@@ -35,3 +35,9 @@ export const listarPorStatus = (status) => {
 
     return resultado;
 }
+
+export const listarProdutos = () => {
+    const produtos = listaDePedidos.map((pedido) => pedido.produto);
+
+    return produtos;
+}
