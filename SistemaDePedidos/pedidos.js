@@ -18,3 +18,14 @@ export const buscarPedidoPorID = (id) => {
 
     return resultado;
 }
+
+export const removerPedido = (id) => {
+    const posicao = listaDePedidos.findIndex((pedido) => pedido.id === Number(id));
+
+    if (posicao === -1) {
+        return;
+    }
+
+    const removidos = listaDePedidos.splice(posicao, 1);
+    return removidos[0];
+}
