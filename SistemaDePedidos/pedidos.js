@@ -29,3 +29,9 @@ export const removerPedido = (id) => {
     const removidos = listaDePedidos.splice(posicao, 1);
     return removidos[0];
 }
+
+export const listarPorStatus = (status) => {
+    const resultado = listaDePedidos.filter((pedido) => pedido.status === status);
+
+    return resultado;
+}
