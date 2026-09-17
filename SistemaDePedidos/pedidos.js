@@ -41,3 +41,11 @@ export const listarProdutos = () => {
 
     return produtos;
 }
+
+export const calcularValorTotal = () => {
+    const total = listaDePedidos.reduce((acumulador, pedido) => {
+        return acumulador + pedido.preco;
+    }, 0);
+
+    return total;
+}
