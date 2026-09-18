@@ -35,6 +35,27 @@ const iniciarMenu = async () => {
 
         iniciarMenu();
     }
+
+    if (opcao === "2") {
+
+        let pedido;
+        while(pedido === undefined) {
+            const id = await rl.question("Digite o ID do pedido: ");
+            pedido = buscarPedidoPorID(id);
+
+            if (pedido === undefined) {
+                console.log("\nID INVÁLIDO! TENTE NOVAMENTE.\n");
+            }
+        }
+        console.log("\nPedido encontrado: ");
+        console.log(`
+            ID: ${pedido.id}
+            Produto: ${pedido.produto}
+            Preco: ${pedido.preco}
+            Status: ${pedido.status}
+        `);
+        iniciarMenu();
+    }
 }
 
 iniciarMenu();
