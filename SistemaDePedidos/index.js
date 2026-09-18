@@ -72,6 +72,30 @@ const iniciarMenu = async () => {
 
         iniciarMenu();
     }
+
+    if (opcao === "4") {
+
+        const statusEscolhido = await rl.question("Digite o status que deseja listar: ");
+
+        const pedidos = listarPorStatus(statusEscolhido);
+
+        if (pedidos.length === 0) {
+            console.log("\nNenhum pedido encontrado.\n");
+        }
+        else {
+            console.log("\nEsses sao seus pedidos de acordo com o status escolhido:\n");
+
+            for (let i = 0; i < pedidos.length; i++) {
+                console.log(`
+                    ID: ${pedidos[i].id}
+                    Produto: ${pedidos[i].produto}
+                    Preco: ${pedidos[i].preco}
+                    Status: ${pedidos[i].status}
+                `);
+            }
+        }
+        iniciarMenu();
+    }
 }
 
 iniciarMenu();
