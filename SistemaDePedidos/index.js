@@ -56,6 +56,22 @@ const iniciarMenu = async () => {
         `);
         iniciarMenu();
     }
+
+    if (opcao === "3") {
+
+        let pedido;
+        while(pedido === undefined) {
+            const id = await rl.question("Digite o ID do pedido que deseja remover: ");
+            pedido = removerPedido(id);
+
+            if (pedido === undefined) {
+                console.log("\nID INVÁLIDO! TENTE NOVAMENTE.\n");
+            }
+        }
+        console.log("\nPedido removido com sucesso!\n");
+
+        iniciarMenu();
+    }
 }
 
 iniciarMenu();
