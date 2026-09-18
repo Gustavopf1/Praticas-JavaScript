@@ -19,3 +19,22 @@ const mostrarMenu = () => {
         0 - Sair
     `);
 }
+
+const iniciarMenu = async () => {
+    mostrarMenu();
+
+    const opcao = await rl.question("Escolha uma opcao: ");
+
+    if (opcao === "1") {
+
+        const produto = await rl.question("Digite o nome do produto: ");
+        const preco = Number(await rl.question("Digite o preco do produto: "));
+        criarPedido(produto, preco);
+
+        console.log("\nPedido criado com sucesso!\n");
+
+        iniciarMenu();
+    }
+}
+
+iniciarMenu();
