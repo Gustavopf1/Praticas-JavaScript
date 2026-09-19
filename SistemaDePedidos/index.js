@@ -113,6 +113,13 @@ const iniciarMenu = async () => {
         }
         iniciarMenu();
     }
+
+    if (opcao === "6") {
+        const total = calcularValorTotal();
+        console.log(`\nValor total dos pedidos: R$ ${total.toFixed(2)}\n`);
+
+        iniciarMenu();
+    }
 }
 
 iniciarMenu();
