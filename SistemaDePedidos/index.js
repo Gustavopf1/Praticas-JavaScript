@@ -96,6 +96,23 @@ const iniciarMenu = async () => {
         }
         iniciarMenu();
     }
+
+    if (opcao === "5") {
+
+        const produtos = listarProdutos();
+
+        if (produtos.length === 0) {
+            console.log("\nNenhum produto encontrado.\n");
+        }
+        else {
+            console.log("\nProdutos dos pedidos:\n");
+
+            for (let i = 0; i < produtos.length; i++) {
+                console.log(`${i + 1} - ${produtos[i]}`);
+            }
+        }
+        iniciarMenu();
+    }
 }
 
 iniciarMenu();
