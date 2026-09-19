@@ -49,3 +49,18 @@ export const calcularValorTotal = () => {
 
     return total;
 }
+
+export const prepararPedido = (id, callback) => {
+    const pedido = buscarPedidoPorID(id);
+
+    if (pedido === undefined) {
+        return;
+    }
+
+    console.log(`\nPreparando o pedido: ${pedido.produto}...\n`);
+
+    setTimeout(() => {
+        pedido.status = "pronto";
+        callback(pedido);
+    }, 3000);
+}

@@ -1,4 +1,4 @@
-import { criarPedido, buscarPedidoPorID, removerPedido, listarPorStatus, listarProdutos, calcularValorTotal } from "./pedidos.js";
+import { criarPedido, buscarPedidoPorID, removerPedido, listarPorStatus, listarProdutos, calcularValorTotal, prepararPedido } from "./pedidos.js";
 import * as readline from "node:readline/promises";
 
 const rl = readline.createInterface({
@@ -16,8 +16,13 @@ const mostrarMenu = () => {
         4 - Listar pedido por status
         5 - Listar produtos
         6 - Calcular valor total dos pedidos
+        7 - Preparar pedido
         0 - Sair
     `);
+}
+
+const avisarCliente = (pedido) => {
+    console.log(`\nO pedido ${pedido.produto} está pronto!\n`);
 }
 
 const iniciarMenu = async () => {
@@ -119,6 +124,26 @@ const iniciarMenu = async () => {
         console.log(`\nValor total dos pedidos: R$ ${total.toFixed(2)}\n`);
 
         iniciarMenu();
+    }
+
+    if (opcao === "7") {
+        const id = await rl.question("Digite o ID do pedido que deseja preparar: ");
+
+        const pedido = buscarPedidoPorID(id);
+
+        if (pedido === undefined) {
+            console.log("\nID INVÁLIDO!\n");
+        }
+        else {
+            prepararPedido(id, avisarCliente);
+        }
+        iniciarMenu();
+    }
+
+    if (opcao === "0") {
+        console.log("\nSaindo do sistema...");
+        rl.close();
+        return;
     }
 }
 
